@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e 
+set -e
 #e.g. /root/incubator-zeppelin
 export INSTALL_DIR=$1
 
@@ -20,22 +20,22 @@ cd $INSTALL_DIR
 
 if [ "$MODE" = "FIRSTLAUNCH" ]; then
 
-	echo "Copying zeppelin-spark jar to HDFS"
-	set +e 
-	hadoop fs -rm -r /tmp/.zeppelin
-	set -e 
-	hadoop fs -mkdir /tmp/.zeppelin
-	hadoop fs -put $INSTALL_DIR/interpreter/spark/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/.zeppelin/
+	#echo "Copying zeppelin-spark jar to HDFS"
+	#set +e
+	#hadoop fs -rm -r /tmp/.zeppelin
+	#set -e
+	#hadoop fs -mkdir /tmp/.zeppelin
+	#hadoop fs -put $INSTALL_DIR/interpreter/spark/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/.zeppelin/
 
 
 	#clean old notebooks
 	if [ -d "notebook/2AHFKRNDZ" ]; then
 		rm -rf notebook/2AHFKRNDZ
-	fi	
+	fi
 
 	if [ -d "notebook/2AK7D7JNE" ]; then
 		rm -rf notebook/2AK7D7JNE
-	fi	
+	fi
 
 
 	if [ -d "notebook/2A94M5J1Z" ]; then
@@ -47,14 +47,14 @@ if [ "$MODE" = "FIRSTLAUNCH" ]; then
 	wget https://www.dropbox.com/s/jlacnbvlzcdhjzf/notebooks.zip?dl=0 -O notebooks.zip
 	unzip notebooks.zip
 	cd ..
-	
-	
+
+
 	echo "<configuration>" > conf/hive-site.xml
 	echo "<property>" >> conf/hive-site.xml
 	echo "   <name>hive.metastore.uris</name>" >> conf/hive-site.xml
 	echo "   <value>thrift://$HIVE_METASTORE_HOST:$HIVE_METASTORE_PORT</value>" >> conf/hive-site.xml
-	echo "</property>" >> conf/hive-site.xml		
-	echo "</configuration>" >> conf/hive-site.xml				
+	echo "</property>" >> conf/hive-site.xml
+	echo "</configuration>" >> conf/hive-site.xml
 fi
 
 #Stop daemon if started
@@ -65,7 +65,7 @@ if [ $STATUS -eq 0 ]; then
     echo "Stopping zeppelin daemon..."
 	bin/zeppelin-daemon.sh stop
 else
-	echo "Zeppelin was not running."	
+	echo "Zeppelin was not running."
 fi
 set -e
 
