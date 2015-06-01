@@ -35,7 +35,6 @@ class Master(Script):
       Execute('mkdir '+params.zeppelin_dir)
       Execute('tar -zxvf zeppelin.tar.gz -C ' + params.zeppelin_dir)
       Execute('mv '+params.zeppelin_dir+'/*/* ' + params.zeppelin_dir)
-      Execute('echo downloaded zeppelin prebuild> /tmp/zep_pre.log')
       Execute('rm -rf zeppelin.tar.gz')
           
       
