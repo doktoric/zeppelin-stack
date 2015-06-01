@@ -44,7 +44,7 @@ if [ "$MODE" = "FIRSTLAUNCH" ]; then
 
 	echo "Importng notebooks"
 	cd notebook
-	wget https://www.dropbox.com/s/jlacnbvlzcdhjzf/notebooks.zip?dl=0 -O notebooks.zip
+	wget https://s3-eu-west-1.amazonaws.com/precompiledzeppelin/notebooks.zip -O notebooks.zip
 	unzip notebooks.zip
 	cd ..
 
