@@ -90,6 +90,7 @@ class Master(Script):
     Execute ('su hdfs -c "hadoop fs -mkdir -p /tmp/.zeppelin"')
     Execute ('cp '+params.zeppelin_dir+'/interpreter/spark/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/')
     Execute ('su hdfs -c "hadoop fs -put -f /tmp/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/.zeppelin/"')
+    Execute ('su hdfs -c "hadoop fs -chmod +w /user"')
 
   def status(self, env):
     import status_params
