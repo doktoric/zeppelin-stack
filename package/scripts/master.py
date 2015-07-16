@@ -11,7 +11,7 @@ class Master(Script):
     import status_params
 
     #location of prebuilt package
-    snapshot_package='https://s3-eu-west-1.amazonaws.com/precompiledzeppelin/zeppelin-0.5.0-zeppelin-0.5.0-b5c705790196001037e7d080b332d9664ab9b182.tar.gz'
+    snapshot_package='https://s3-eu-west-1.amazonaws.com/precompiledzeppelin/zeppelin-0.5.0-b5c705790196001037e7d080b332d9664ab9b182.tar.gz'
 
     #e.g. /var/lib/ambari-agent/cache/stacks/HDP/2.2/services/zeppelin-stack/package
     service_packagedir = os.path.realpath(__file__).split('/scripts')[0]
