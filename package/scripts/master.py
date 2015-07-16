@@ -87,10 +87,10 @@ class Master(Script):
     import status_params
     self.configure(env)
     Execute (params.zeppelin_dir+'/bin/zeppelin-daemon.sh start >> ' + params.stack_logfile)
-    Execute ('su hdfs -c "hadoop fs -mkdir -p /tmp/.zeppelin"')
+    Execute ('su hdfs -c "hadoop fs -mkdir -p /tmp/.zeppelin; echo Creating dir on HDFS"')
     Execute ('cp '+params.zeppelin_dir+'/interpreter/spark/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/')
-    Execute ('su hdfs -c "hadoop fs -put -f /tmp/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/.zeppelin/"')
-    Execute ('su hdfs -c "hadoop fs -chmod +w /user"')
+    Execute ('su hdfs -c "hadoop fs -put -f /tmp/zeppelin-spark-0.5.0-SNAPSHOT.jar /tmp/.zeppelin/; echo Copying zeppelin jar to HDFS"')
+    Execute ('su hdfs -c "hadoop fs -chmod +w /user; echo Modifying HDFS permissions"')
 
   def status(self, env):
     import status_params
